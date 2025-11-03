@@ -1,7 +1,7 @@
 class Crow < Formula
   desc "None"
   homepage "None"
-  version "0.1.2"
+  version "0.1.3"
 
 
   # Python package - install via pip so wrapper script can import it
@@ -10,17 +10,17 @@ class Crow < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/joshuboi77/Crow/releases/download/v0.1.2/crow-darwin-arm64.tar.gz"
-      sha256 "7d0c8177925c9d0a6c0a9572b3af267cb541df6e8f392c0596452bdd1dcceae0"
+      url "https://github.com/joshuboi77/Crow/releases/download/v0.1.3/crow-darwin-arm64.tar.gz"
+      sha256 "4ad8c335898023d1d2deff6cbc2970b6f9b9e2bbc99f3e7717818a6eb05d92c1"
     else
-      url "https://github.com/joshuboi77/Crow/releases/download/v0.1.2/crow-darwin-amd64.tar.gz"
-      sha256 "b8e606002de28d2077c80dec0fc333d1c45446c264e9c1de9ffa67ca27cdbbaa"
+      url "https://github.com/joshuboi77/Crow/releases/download/v0.1.3/crow-darwin-amd64.tar.gz"
+      sha256 "8237e8997ad5a2ed3465647cc23ace84814d2e3f46f5fb505d8402563745d3cc"
     end
   end
 
   on_linux do
-    url "https://github.com/joshuboi77/Crow/releases/download/v0.1.2/crow-linux-amd64.tar.gz"
-    sha256 "bd49160669d003f8a4e8e1a8f262e613ac0ebc6785c49962f27b7c6c19f587e8"
+    url "https://github.com/joshuboi77/Crow/releases/download/v0.1.3/crow-linux-amd64.tar.gz"
+    sha256 "006c0b7eec9c3a0176bb0cdca05e5d6110c57c25dfed97bfbbdc79a50d5d364e"
   end
 
   def install
@@ -42,7 +42,7 @@ class Crow < Formula
       package_dir = "crow"
       if Dir.exist?(package_dir)
         # Create a minimal setup.py if needed
-        File.write("setup.py", "from setuptools import setup; setup(name='crow', version='0.1.2')")
+        File.write("setup.py", "from setuptools import setup; setup(name='crow', version='0.1.3')")
         system python3, "-m", "pip", "install", "--prefix", prefix, "--no-build-isolation", "."
       end
     end
@@ -50,6 +50,6 @@ class Crow < Formula
   end
 
   test do
-    assert_match "0.1.2", shell_output("#{bin}/crow --version")
+    assert_match "0.1.3", shell_output("#{bin}/crow --version")
   end
 end
