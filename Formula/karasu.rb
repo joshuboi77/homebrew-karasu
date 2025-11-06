@@ -1,7 +1,7 @@
 class Karasu < Formula
   desc "None"
   homepage "None"
-  version "0.2.1"
+  version "0.3.0"
 
 
   # Python package - install via pip so wrapper script can import it
@@ -10,17 +10,17 @@ class Karasu < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/joshuboi77/Karasu/releases/download/v0.2.1/karasu-darwin-arm64.tar.gz"
-      sha256 "a47ccf1076241ac6161155806f1f579e69143b4847dd50fd6152e851fc3b9c13"
+      url "https://github.com/joshuboi77/Karasu/releases/download/v0.3.0/karasu-darwin-arm64.tar.gz"
+      sha256 "ad24670f90b3b446d514e3eda205cf12609cac0e3e06d0910e81693cc19fdf94"
     else
-      url "https://github.com/joshuboi77/Karasu/releases/download/v0.2.1/karasu-darwin-amd64.tar.gz"
-      sha256 "6caf38f2ef201392cdc9beda8d7600d0606bb23149ee00a1758f53b1b82e6840"
+      url "https://github.com/joshuboi77/Karasu/releases/download/v0.3.0/karasu-darwin-amd64.tar.gz"
+      sha256 "2bef184c0ddc7a4fd622faf80da818ec43c6c6cfbf0d1247fc9c2d5e5fdb8ebf"
     end
   end
 
   on_linux do
-    url "https://github.com/joshuboi77/Karasu/releases/download/v0.2.1/karasu-linux-amd64.tar.gz"
-    sha256 "cdcfa103d453f7b790b8b2f0b6329dced16a1de712149e1eff56d5e099718297"
+    url "https://github.com/joshuboi77/Karasu/releases/download/v0.3.0/karasu-linux-amd64.tar.gz"
+    sha256 "878da9c51e4855adae86d753449dc3fb7a26a5389333629cf2d41712426a19a8"
   end
 
   def install
@@ -42,7 +42,7 @@ class Karasu < Formula
       package_dir = "karasu"
       if Dir.exist?(package_dir)
         # Create a minimal setup.py if needed
-        File.write("setup.py", "from setuptools import setup; setup(name='karasu', version='0.2.1')")
+        File.write("setup.py", "from setuptools import setup; setup(name='karasu', version='0.3.0')")
         system python3, "-m", "pip", "install", "--prefix", prefix, "--no-build-isolation", "."
       end
     end
@@ -50,6 +50,6 @@ class Karasu < Formula
   end
 
   test do
-    assert_match "0.2.1", shell_output("#{bin}/karasu --version")
+    assert_match "0.3.0", shell_output("#{bin}/karasu --version")
   end
 end
